@@ -1,7 +1,7 @@
 
 #include "so_long.h"
 
-void	print_map(t_game *game)
+void	print_map(t_solong *game)
 {
 	t_coords	c;
 
@@ -28,7 +28,7 @@ void	print_map(t_game *game)
 	}
 }
 
-void	init_images(t_game *game)
+void	init_images(t_solong *game)
 {
 	t_coords	img;
 
@@ -54,7 +54,7 @@ void	init_images(t_game *game)
 		(ft_printf("Error\nFFail to load IMG_EXIT\n"), free_game(game));
 }
 
-int	is_screen_size_ok(t_game *game)
+int	is_screen_size_ok(t_solong *game)
 {
 	int	pc_width;
 	int	pc_height;
@@ -69,7 +69,7 @@ int	is_screen_size_ok(t_game *game)
 	return (1);
 }
 
-void	init_game(t_game *game, char **map)
+void	init_game(t_solong *game, char **map)
 {
 	game->map = map;
 	game->total_coins = 0;

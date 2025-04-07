@@ -1,7 +1,7 @@
 
 #include "so_long.h"
 
-void	free_game(t_game *game)
+void	free_game(t_solong *game)
 {
 	if (game->window)
 		mlx_destroy_window(game->mlx, game->window);
@@ -23,12 +23,12 @@ void	free_game(t_game *game)
 	exit(EXIT_SUCCESS);
 }
 
-int	press_cross(t_game *game)
+int	press_cross(t_solong *game)
 {
 	return (ft_printf("Game closed with CROSS\n"), free_game(game), 0);
 }
 
-int	check_if_end(int keycode, t_game *game)
+int	check_if_end(int keycode, t_solong *game)
 {
 	if (keycode == ESC_KEY)
 		(ft_printf("Game closed with ESC_KEY\n"), free_game(game));
@@ -56,7 +56,7 @@ int	check_if_end(int keycode, t_game *game)
 	return (0);
 }
 
-int	lets_game(t_game *game)
+int	lets_game(t_solong *game)
 {
 	init_images(game);
 	game->window = mlx_new_window(game->mlx, game->size.x
@@ -73,21 +73,21 @@ int	lets_game(t_game *game)
 
 int	main(int ac, char **av)
 {
-	char	**map;
-	t_game	game;
+	char	**m;
+	t_solong	game;
 
 	if (ac != 2)
 		return (ft_printf("Error\nUsage: ./so_long <map_file>\n"), 1);
-	map = is_map_ok(av[1]);
-	if (!map)
+	m = check_map(av[1]);
+	if (!m)
 		return (1);
-	init_game(&game, map);
+	init_game(&game, m);
 	game.mlx = mlx_init();
 	if (!game.mlx)
-		return (free_split(map), perror("Error\nFail to launch MLX\n"), 1);
+		return (free_split(m), perror("Error\nFail to launch MLX\n"), 1);
 	if (!is_screen_size_ok(&game))
 	{
-		(free_split(map), mlx_destroy_display(game.mlx), free(game.mlx));
+		(free_split(m), mlx_destroy_display(game.mlx), free(game.mlx));
 		return (1);
 	}
 	return (lets_game(&game));

@@ -73,16 +73,19 @@ char	**map_checks(char *map)
 	return (free_split(map_copy), map_split);
 }
 
-char	*read_map_file(int fd)
+char	*reead_map(int fd)
 {
 	char	*buff;
 	char	*line;
+	int     len;
 
+	len = 0;
 	buff = NULL;
 	line = get_next_line(fd);
 	while (line)
 	{
-		buff = ft_realloc(buff, ft_strlen(line));
+	    len = ft_strlen(line);
+		buff = ft_realloc(buff, len);
 		if (!buff)
 			return (free(line), ft_printf("Error\nFail when realloc\n"), NULL);
 		buff = ft_strcat(buff, line);
@@ -92,18 +95,20 @@ char	*read_map_file(int fd)
 	return (buff);
 }
 
-char	**is_map_ok(char *map_file)
+char	**check_map(char *map_file)
 {
 	int		fd;
 	char	*map;
 	char	**map_ok;
-	if (ft_strlen(map_file) < 5
-		|| ft_strcmp(&map_file[ft_strlen(map_file) - 4], ".ber") != 0)
+	int len;
+
+	len = ft_strlen(map_file);
+	if (len < 5	|| ft_strcmp(&map_file[len - 4], ".ber") != 0)
 		return (ft_printf("Error\nIncorrect map file\n"), NULL);
 	fd = open(map_file, O_RDONLY);
 	if (fd == -1)
 		return (perror("Error\nFail to open map file"), NULL);
-	map = read_map_file(fd);
+	map = reead_map(fd);
 	if (close(fd) == -1)
 		return (perror("Error\nFail to close map file"), free(map), NULL);
 	if (!map)

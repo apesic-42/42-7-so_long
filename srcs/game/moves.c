@@ -1,7 +1,7 @@
 
 #include "so_long.h"
 
-static int	is_move_up_or_left(int keycode, t_game *game, int *found_coin)
+static int	is_move_up_or_left(int keycode, t_solong *game, int *found_coin)
 {
 	if ((keycode == W_KEY || keycode == UP_KEY)
 		&& game->map[game->p_pos.y - 1][game->p_pos.x] != '1')
@@ -26,7 +26,7 @@ static int	is_move_up_or_left(int keycode, t_game *game, int *found_coin)
 	return (0);
 }
 
-static int	is_move_down_or_right(int keycode, t_game *game, int *found_coin)
+static int	is_move_down_or_right(int keycode, t_solong *game, int *found_coin)
 {
 	if ((keycode == S_KEY || keycode == DOWN_KEY)
 		&& game->map[game->p_pos.y + 1][game->p_pos.x] != '1')
@@ -51,7 +51,7 @@ static int	is_move_down_or_right(int keycode, t_game *game, int *found_coin)
 	return (0);
 }
 
-int	is_move_possible(int keycode, t_game *game, int *found_coin)
+int	is_move_possible(int keycode, t_solong *game, int *found_coin)
 {
 	*found_coin = 0;
 	if (is_move_up_or_left(keycode, game, found_coin))
@@ -61,7 +61,7 @@ int	is_move_possible(int keycode, t_game *game, int *found_coin)
 	return (0);
 }
 
-int	move_player(int keycode, t_game *game)
+int	move_player(int keycode, t_solong *game)
 {
 	t_coords	old_p_pos;
 	int			found_coin;

@@ -35,7 +35,7 @@ typedef struct s_coords
 	int			y;
 }	t_coords;
 
-typedef struct s_game
+typedef struct s_solong
 {
 	char		**map;
 	t_coords	size;
@@ -52,12 +52,12 @@ typedef struct s_game
 	void		*player1;
 	void		*player2;
 	void		*exit;
-}	t_game;
+}	t_solong;
 
 /* PARSING */
 
-char	**is_map_ok(char *map_file);
-char	*read_map_file(int fd);
+char	**check_map(char *map_file);
+char	*reead_map(int fd);
 char	**map_checks(char *map);
 int		basic_checks(char *map);
 int		is_map_rectangular(char **map);
@@ -70,12 +70,12 @@ int		ft_tablen(char **tab);
 
 /* GAME */
 
-void	init_game(t_game *game, char **map);
-void	free_game(t_game *game);
-int		is_screen_size_ok(t_game *game);
-void	init_images(t_game *game);
-void	print_map(t_game *game);
-int		move_player(int keycode, t_game *game);
-int		is_move_possible(int keycode, t_game *game, int *found_coin);
+void	init_game(t_solong *game, char **map);
+void	free_game(t_solong *game);
+int		is_screen_size_ok(t_solong *game);
+void	init_images(t_solong *game);
+void	print_map(t_solong *game);
+int		move_player(int keycode, t_solong *game);
+int		is_move_possible(int keycode, t_solong *game, int *found_coin);
 
 #endif
