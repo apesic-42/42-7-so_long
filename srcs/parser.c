@@ -64,13 +64,13 @@ char	**map_checks(char *map)
 	if (!map_split)
 		return (ft_printf("Error\nFail when split map\n"), NULL);
 	if (!is_map_rectangular(map_split) || !are_limits_ok(map_split))
-		return (free_split(map_split), NULL);
+		return (free_double_table(map_split), NULL);
 	map_copy = copy_map(map_split);
 	if (!map_copy)
 		return (ft_printf("Error\nFail when copy splited map\n"), NULL);
 	if (!is_solvable(map_copy))
-		return (free_split(map_split), free_split(map_copy), NULL);
-	return (free_split(map_copy), map_split);
+		return (free_double_table(map_split), free_double_table(map_copy), NULL);
+	return (free_double_table(map_copy), map_split);
 }
 
 char	*reead_map(int fd)

@@ -36,35 +36,35 @@ void	init_images(t_solong *game)
 	img.y = HEIGHT;
 	game->back = mlx_xpm_file_to_image(game->mlx, IMG_BACK, &img.x, &img.y);
 	if (!game->back || img.x != WIDTH || img.y != HEIGHT)
-		(ft_printf("Error\nFFail to load IMG_BACK\n"), free_game(game));
+		(ft_printf("Error\nFail to load IMG_BACK\n"), free_game(game));
 	game->wall = mlx_xpm_file_to_image(game->mlx, IMG_WALL, &img.x, &img.y);
 	if (!game->wall || img.x != WIDTH || img.y != HEIGHT)
-		(ft_printf("Error\nFFail to load IMG_WALL\n"), free_game(game));
+		(ft_printf("Error\nFail to load IMG_WALL\n"), free_game(game));
 	game->coin = mlx_xpm_file_to_image(game->mlx, IMG_COIN, &img.x, &img.y);
 	if (!game->coin || img.x != WIDTH || img.y != HEIGHT)
-		(ft_printf("Error\nFFail to load IMG_COIN\n"), free_game(game));
+		(ft_printf("Error\nFail to load IMG_COIN\n"), free_game(game));
 	game->player1 = mlx_xpm_file_to_image(game->mlx, IMG_PLYR1, &img.x, &img.y);
 	if (!game->player1 || img.x != WIDTH || img.y != HEIGHT)
-		(ft_printf("Error\nFFail to load IMG_PLYR1\n"), free_game(game));
+		(ft_printf("Error\nFail to load IMG_PLYR1\n"), free_game(game));
 	game->player2 = mlx_xpm_file_to_image(game->mlx, IMG_PLYR2, &img.x, &img.y);
 	if (!game->player2 || img.x != WIDTH || img.y != HEIGHT)
-		(ft_printf("Error\nFFail to load IMG_PLYR2\n"), free_game(game));
+		(ft_printf("Error\nFail to load IMG_PLYR2\n"), free_game(game));
 	game->exit = mlx_xpm_file_to_image(game->mlx, IMG_EXIT, &img.x, &img.y);
 	if (!game->exit || img.x != WIDTH || img.y != HEIGHT)
-		(ft_printf("Error\nFFail to load IMG_EXIT\n"), free_game(game));
+		(ft_printf("Error\nFail to load IMG_EXIT\n"), free_game(game));
 }
 
-int	is_screen_size_ok(t_solong *game)
+int	check_screen_size(t_solong *game)
 {
-	int	pc_width;
-	int	pc_height;
+	int	width;
+	int	height;
 
-	pc_width = 0;
-	pc_height = 0;
-	mlx_get_screen_size(game->mlx, &pc_width, &pc_height);
-	if (game->size.x * WIDTH > pc_width)
+	width = 0;
+	height = 0;
+	mlx_get_screen_size(game->mlx, &width, &height);
+	if (game->size.x * WIDTH > width)
 		return (ft_printf("Error\nFMap width too big\n"), 0);
-	if (game->size.y * HEIGHT > pc_height)
+	if (game->size.y * HEIGHT > height)
 		return (ft_printf("Error\nFMap height too big\n"), 0);
 	return (1);
 }

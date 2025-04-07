@@ -18,7 +18,7 @@ void	free_game(t_solong *game)
 	if (game->exit)
 		mlx_destroy_image(game->mlx, game->exit);
 	mlx_destroy_display(game->mlx);
-	free_split(game->map);
+	free_double_table(game->map);
 	free(game->mlx);
 	exit(EXIT_SUCCESS);
 }
@@ -56,7 +56,7 @@ int	check_if_end(int keycode, t_solong *game)
 	return (0);
 }
 
-int	lets_game(t_solong *game)
+int	play(t_solong *game)
 {
 	init_images(game);
 	game->window = mlx_new_window(game->mlx, game->size.x
@@ -73,7 +73,7 @@ int	lets_game(t_solong *game)
 
 int	main(int ac, char **av)
 {
-	char	**m;
+	char       	**m;
 	t_solong	game;
 
 	if (ac != 2)
@@ -84,11 +84,11 @@ int	main(int ac, char **av)
 	init_game(&game, m);
 	game.mlx = mlx_init();
 	if (!game.mlx)
-		return (free_split(m), perror("Error\nFail to launch MLX\n"), 1);
-	if (!is_screen_size_ok(&game))
+		return (free_double_table(m), perror("Error\nFail to launch MLX\n"), 1);
+	if (!check_screen_size(&game))
 	{
-		(free_split(m), mlx_destroy_display(game.mlx), free(game.mlx));
+		(free_double_table(m), mlx_destroy_display(game.mlx), free(game.mlx));
 		return (1);
 	}
-	return (lets_game(&game));
+	return (play(&game));
 }

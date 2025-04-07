@@ -65,14 +65,13 @@ int		are_limits_ok(char **map);
 char	**copy_map(char **map_split);
 int		is_solvable(char **map);
 int		flood_fill(char **map, t_coords pos);
-void	free_split(char **tab);
 int		ft_tablen(char **tab);
 
 /* GAME */
 
 void	init_game(t_solong *game, char **map);
 void	free_game(t_solong *game);
-int		is_screen_size_ok(t_solong *game);
+int		check_screen_size(t_solong *game);
 void	init_images(t_solong *game);
 void	print_map(t_solong *game);
 int		move_player(int keycode, t_solong *game);

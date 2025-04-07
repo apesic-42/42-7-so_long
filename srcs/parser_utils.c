@@ -65,7 +65,7 @@ char	**copy_map(char **map_split)
 	{
 		map_copy[pos.x] = ft_strdup(map_split[pos.x]);
 		if (!map_copy[pos.x])
-			return (free_split(map_copy), NULL);
+			return (free_double_table(map_copy), NULL);
 	}
 	return (map_copy);
 }
@@ -107,21 +107,6 @@ int	ft_tablen(char **tab)
 	while (tab[i])
 		i++;
 	return (i);
-}
-
-void	free_split(char **tab)
-{
-	int	i;
-
-	i = 0;
-	if (!tab)
-		return ;
-	while (tab[i])
-	{
-		free(tab[i]);
-		i++;
-	}
-	free(tab);
 }
 
 int	is_map_rectangular(char **map)
