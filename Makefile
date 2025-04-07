@@ -9,11 +9,16 @@ RM = rm -f
 SRCS_DIR = srcs/
 OBJS_DIR = .objets/srcs/
 
-PARSING = $(addprefix parsing/, parser parser_utils)
-GAME = $(addprefix game/, initialize moves)
 
-SRCS = $(addprefix $(SRCS_DIR), $(addsuffix .c, main $(PARSING) $(GAME)))
-OBJS = $(addprefix $(OBJS_DIR), $(addsuffix .o, main $(PARSING) $(GAME)))
+
+FILES = init_game \
+         main \
+         parser \
+         parser_utils \
+         moves \
+
+SRCS = $(addprefix $(SRCS_DIR), $(addsuffix .c, main $(FILES)))
+OBJS = $(addprefix $(OBJS_DIR), $(addsuffix .o, main $(FILES)))
 
 INCLUDE_DIR = includes/
 INCLUDES = -I$(INCLUDE_DIR) -I$(INCLUDE_DIR)/libft -I$(INCLUDE_DIR)/minilibx-linux
