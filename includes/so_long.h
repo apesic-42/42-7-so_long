@@ -65,6 +65,8 @@ int		are_limits_ok(char **map);
 char	**copy_map(char **map_split);
 int		is_solvable(char **map);
 int		flood_fill(char **map, t_coords pos);
+void	free_split(char **tab);
+int		ft_tablen(char **tab);
 
 /* GAME */
 

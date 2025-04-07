@@ -97,6 +97,33 @@ int	are_limits_ok(char **map)
 	return (1);
 }
 
+int	ft_tablen(char **tab)
+{
+	int	i;
+
+	i = 0;
+	if (!tab)
+		return (0);
+	while (tab[i])
+		i++;
+	return (i);
+}
+
+void	free_split(char **tab)
+{
+	int	i;
+
+	i = 0;
+	if (!tab)
+		return ;
+	while (tab[i])
+	{
+		free(tab[i]);
+		i++;
+	}
+	free(tab);
+}
+
 int	is_map_rectangular(char **map)
 {
 	int	x;

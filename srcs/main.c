@@ -67,7 +67,7 @@ int	lets_game(t_game *game)
 	mlx_hook(game->window, 2, 1L, check_if_end, game);
 	mlx_hook(game->window, CROSS, 0, press_cross, game);
 	mlx_loop(game->mlx);
-	free_game(game->mlx);
+	free_game(game);
 	return (0);
 }
 

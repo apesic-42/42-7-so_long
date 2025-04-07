@@ -5,45 +5,65 @@
 #                                                     +:+ +:+         +:+      #
 #    By: apesic <apesic@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2024/11/27 16:00:33 by apesic            #+#    #+#              #
-#    Updated: 2024/12/04 18:00:38 by apesic           ###   ########.fr        #
+#    Created: 2024/11/13 11:05:39 by apesic            #+#    #+#              #
+#    Updated: 2024/11/29 14:24:06 by apesic           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME	=	libftprintf.a
+SRC	= \
+ft_atoi.c \
+ft_bzero.c \
+ft_calloc.c \
+ft_isalnum.c \
+ft_isalpha.c \
+ft_isascii.c \
+ft_isdigit.c \
+ft_isprint.c \
+ft_memchr.c \
+ft_memcmp.c \
+ft_memcpy.c \
+ft_memmove.c \
+ft_memset.c \
+ft_strchr.c \
+ft_strdup.c \
+ft_strlcat.c \
+ft_strlcpy.c \
+ft_strlen.c \
+ft_strncmp.c \
+ft_strnstr.c \
+ft_strrchr.c \
+ft_tolower.c \
+ft_toupper.c \
+ft_split.c \
+ft_strjoin.c \
+ft_substr.c \
+ft_strtrim.c \
+ft_itoa.c \
+ft_strmapi.c \
+ft_striteri.c \
+ft_putchar_fd.c \
+ft_putstr_fd.c \
+ft_putendl_fd.c \
+ft_putnbr_fd.c \
 
-CC		=	cc
-CFLAGS	=	-Wall -Wextra -Werror
-AR		=	ar
-
-PRINTF_DIR = ft_printf/
-LIBFT_DIR = libft/
-GNL_DIR = get_next_line/
-
-PRINTF_SRC		=	ft_itoa_hexa  ft_itoa_hexa_ll  ft_itoa_hexa_upper  ft_putnumber_u  ft_printf  percent_csdiu  percent_pxXpercent
-PRINTF_DS = $(addprefix $(PRINTF_DIR), $(addsuffix .c, $(PRINTF_SRC)))
-
-GNL_SRC		=	get_next_line get_next_line_utils
-GNL_DS = $(addprefix $(GNL_DIR), $(addsuffix .c, $(GNL_SRC)))
-
-OBJS = $(PRINTF_DS:.c=.o) $(GNL_DS:.c=.o)
+OBJS = $(SRC:.c=.o)
+NAME	= libft.a
+CC = cc
+AR = ar
+CFLAGS = -Wall -Wextra -Werror
 
 all: $(NAME)
 
-$(NAME): $(OBJS)
-	make -C $(LIBFT_DIR)
-	cp $(LIBFT_DIR)libft.a $(NAME)
-	$(AR) -rcs $(NAME) $(OBJS)
+$(NAME) : $(OBJS)
+	$(AR) rcs $(NAME) $(OBJS)
 
 %.o:%.c
 	$(CC) $(CFLAGS) -I./ -c $< -o $@
 
 clean:
-	make -C $(LIBFT_DIR) clean
 	rm -f $(OBJS)
 
 fclean : clean
-	make -C $(LIBFT_DIR) fclean
 	rm -f $(NAME)
 
 re : fclean all

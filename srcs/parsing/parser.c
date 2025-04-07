@@ -97,7 +97,6 @@ char	**is_map_ok(char *map_file)
 	int		fd;
 	char	*map;
 	char	**map_ok;
-
 	if (ft_strlen(map_file) < 5
 		|| ft_strcmp(&map_file[ft_strlen(map_file) - 4], ".ber") != 0)
 		return (ft_printf("Error\nIncorrect map file\n"), NULL);
