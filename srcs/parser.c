@@ -11,10 +11,9 @@ static int	basic_checks_next(char *map, int *p, int *e, int *c)
 	while (map[++i])
 	{
 		if ((map[0] != '1') || (map[i] == '\n' && map[i + 1] == '\n')
-			|| !(map[i] == 'P' || map[i] == 'C' || map[i] == 'E' || map[i]
-				== '1' || map[i] == '0' || map[i] == '\n'))
-			return (ft_printf
-				("Error\n1rst char != 1 | n -> n | invalid char\n"), 0);
+			|| !(map[i] == 'P' || map[i] == 'C' || map[i] == 'E'
+				|| map[i] == '1' || map[i] == '0' || map[i] == '\n'))
+			return (ft_printf("Error\n1rst char != 1 | n -> n | invalid char\n"), 0);
 		if (map[i] == '\n')
 			n_nbr++;
 		if (map[i] == 'P')
@@ -25,8 +24,7 @@ static int	basic_checks_next(char *map, int *p, int *e, int *c)
 			(*c)++;
 	}
 	if (map[i - 2] != '1' || n_nbr < 2 || *p != 1 || *e != 1 || *c < 1)
-		return (ft_printf
-			("Error\nLast char, p, e != 1 | < 2 n | c < 1\n"), 0);
+		return (ft_printf("Error\nLast char, p, e != 1 | < 2 n | c < 1\n"), 0);
 	return (1);
 }
 
@@ -44,8 +42,7 @@ int	basic_checks(char *map)
 	if (!map_len)
 		return (ft_printf("Error\nEmpty map\n"), 0);
 	if (map_len < 17)
-		return (ft_printf
-			("Error\nMap too small, minimum size must be 17 chars\n"), 0);
+		return (ft_printf("Error\nMap too small,minimum size must be 17 chars\n"), 0);
 	if (!basic_checks_next(map, &p, &e, &c))
 		return (0);
 	return (1);
@@ -69,7 +66,8 @@ char	**map_checks(char *map)
 	if (!map_copy)
 		return (ft_printf("Error\nFail when copy splited map\n"), NULL);
 	if (!is_solvable(map_copy))
-		return (free_double_table(map_split), free_double_table(map_copy), NULL);
+		return (free_double_table(map_split), free_double_table(map_copy),
+			NULL);
 	return (free_double_table(map_copy), map_split);
 }
 
@@ -77,14 +75,14 @@ char	*reead_map(int fd)
 {
 	char	*buff;
 	char	*line;
-	int     len;
+	int		len;
 
 	len = 0;
 	buff = NULL;
 	line = get_next_line(fd);
 	while (line)
 	{
-	    len = ft_strlen(line);
+		len = ft_strlen(line);
 		buff = ft_realloc(buff, len);
 		if (!buff)
 			return (free(line), ft_printf("Error\nFail when realloc\n"), NULL);
@@ -100,10 +98,10 @@ char	**check_map(char *map_file)
 	int		fd;
 	char	*map;
 	char	**map_ok;
-	int len;
+	int		len;
 
 	len = ft_strlen(map_file);
-	if (len < 5	|| ft_strcmp(&map_file[len - 4], ".ber") != 0)
+	if (len < 5 || ft_strcmp(&map_file[len - 4], ".ber") != 0)
 		return (ft_printf("Error\nIncorrect map file\n"), NULL);
 	fd = open(map_file, O_RDONLY);
 	if (fd == -1)

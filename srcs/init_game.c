@@ -18,9 +18,8 @@ void	print_map(t_solong *game)
 				mlx_put_image_to_window(game->mlx, game->window, game->coin, c.x
 					* WIDTH, c.y * HEIGHT);
 			else if (game->map[c.y][c.x] == 'P')
-				mlx_put_image_to_window
-				(game->mlx, game->window, game->player1, c.x
-					* WIDTH, c.y * HEIGHT);
+				mlx_put_image_to_window(game->mlx, game->window, game->player1,
+					c.x * WIDTH, c.y * HEIGHT);
 			else
 				mlx_put_image_to_window(game->mlx, game->window, game->back, c.x
 					* WIDTH, c.y * HEIGHT);

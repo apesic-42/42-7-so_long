@@ -49,9 +49,10 @@ int	check_if_end(int keycode, t_solong *game)
 			game->e_pos.x * WIDTH, game->e_pos.y * HEIGHT);
 	if (game->coins_ok == game->total_coins && game->p_pos.y == game->e_pos.y
 		&& game->p_pos.x == game->e_pos.x)
-		(ft_printf("\nWow... you completed this ridiculous difficult level in"),
-			ft_printf(" just %d moves ! That's impressive !\n", game->moves - 1),
-			ft_printf("Have you ever thought about an e-sport career ?\n\n"),
+    	(ft_printf("\nAmazing! You've conquered this insanely tough level in"),
+    		ft_printf(" just %d moves! That's seriously impressive!\n", game->moves
+    			- 1),
+    		ft_printf("Ever considered going pro in e-sports?\n\n"),
 			free_game(game));
 	return (0);
 }
@@ -59,8 +60,8 @@ int	check_if_end(int keycode, t_solong *game)
 int	play(t_solong *game)
 {
 	init_images(game);
-	game->window = mlx_new_window(game->mlx, game->size.x
-			* WIDTH, game->size.y * HEIGHT, "so_long");
+	game->window = mlx_new_window(game->mlx, game->size.x * WIDTH, game->size.y
+			* HEIGHT, "so_long");
 	if (!game->window)
 		return (perror("Error\nFail to create display\n"), free_game(game), 1);
 	print_map(game);
@@ -73,7 +74,7 @@ int	play(t_solong *game)
 
 int	main(int ac, char **av)
 {
-	char       	**m;
+	char		**m;
 	t_solong	game;
 
 	if (ac != 2)

@@ -3,8 +3,8 @@
 
 static int	is_move_up_or_left(int keycode, t_solong *game, int *found_coin)
 {
-	if ((keycode == W_KEY || keycode == UP_KEY)
-		&& game->map[game->p_pos.y - 1][game->p_pos.x] != '1')
+	if ((keycode == W_KEY || keycode == UP_KEY) && game->map[game->p_pos.y
+		- 1][game->p_pos.x] != '1')
 	{
 		if (game->map[game->p_pos.y - 1][game->p_pos.x] == 'C')
 		{
@@ -28,8 +28,8 @@ static int	is_move_up_or_left(int keycode, t_solong *game, int *found_coin)
 
 static int	is_move_down_or_right(int keycode, t_solong *game, int *found_coin)
 {
-	if ((keycode == S_KEY || keycode == DOWN_KEY)
-		&& game->map[game->p_pos.y + 1][game->p_pos.x] != '1')
+	if ((keycode == S_KEY || keycode == DOWN_KEY) && game->map[game->p_pos.y
+		+ 1][game->p_pos.x] != '1')
 	{
 		if (game->map[game->p_pos.y + 1][game->p_pos.x] == 'C')
 		{
@@ -69,8 +69,8 @@ int	move_player(int keycode, t_solong *game)
 	old_p_pos = game->p_pos;
 	if (is_move_possible(keycode, game, &found_coin) == 1)
 	{
-		mlx_put_image_to_window(game->mlx, game->window, game->back,
-			old_p_pos.x * WIDTH, old_p_pos.y * HEIGHT);
+		mlx_put_image_to_window(game->mlx, game->window, game->back, old_p_pos.x
+			* WIDTH, old_p_pos.y * HEIGHT);
 		if (found_coin)
 			game->coins_ok++;
 		if (game->coins_ok == game->total_coins)

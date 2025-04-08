@@ -84,10 +84,10 @@ int	are_limits_ok(char **map)
 	{
 		x = -1;
 		while (map[y][++x])
-			if ((map[y][0] != '1')
-				|| (map[y][x + 1] == '\0' && map[y][x] != '1'))
-				return (ft_printf
-					("Error\n1rst & last char of lines must be 1\n"), 0);
+			if ((map[y][0] != '1') || (map[y][x + 1] == '\0'
+					&& map[y][x] != '1'))
+				return (ft_printf("Error\n1rst & last char of lines must be 1\n"),
+					0);
 		y++;
 	}
 	x = -1;
@@ -126,8 +126,8 @@ int	is_map_rectangular(char **map)
 		j = -1;
 		while (map[i][++j])
 			if (map[i][j + 1] == '\0' && j + 1 != x)
-				return (ft_printf
-					("Error\nAll lines doesn't have the same size\n"), 0);
+				return (ft_printf("Error\nAll lines doesn't have the same size\n"),
+					0);
 		i++;
 	}
 	return (1);
