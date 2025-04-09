@@ -1,10 +1,24 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   moves.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: apesic <apesicstudent.42.fr>               +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/04/08 15:11:59 by apesic            #+#    #+#             */
+/*   Updated: 2025/04/08 15:12:00 by apesic           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "so_long.h"
 
 static int	is_move_up_or_left(int keycode, t_solong *game, int *found_coin)
 {
-	if ((keycode == W_KEY || keycode == UP_KEY) && game->map[game->p_pos.y
-		- 1][game->p_pos.x] != '1')
+	char	x;
+	char	y;
+
+	x = game->map[game->p_pos.y - 1][game->p_pos.x];
+	if ((keycode == W_KEY || keycode == UP_KEY) && x != '1')
 	{
 		if (game->map[game->p_pos.y - 1][game->p_pos.x] == 'C')
 		{
@@ -13,12 +27,12 @@ static int	is_move_up_or_left(int keycode, t_solong *game, int *found_coin)
 		}
 		return (game->p_pos.y = game->p_pos.y - 1, 1);
 	}
-	if ((keycode == A_KEY || keycode == LEFT_KEY)
-		&& game->map[game->p_pos.y][game->p_pos.x - 1] != '1')
+	y = game->map[game->p_pos.y][game->p_pos.x - 1];
+	if ((keycode == A_KEY || keycode == LEFT_KEY) && y != '1')
 	{
-		if (game->map[game->p_pos.y][game->p_pos.x - 1] == 'C')
+		if (y == 'C')
 		{
-			game->map[game->p_pos.y][game->p_pos.x - 1] = '0';
+			y = '0';
 			*found_coin = 1;
 		}
 		return (game->p_pos.x = game->p_pos.x - 1, 1);
@@ -28,8 +42,10 @@ static int	is_move_up_or_left(int keycode, t_solong *game, int *found_coin)
 
 static int	is_move_down_or_right(int keycode, t_solong *game, int *found_coin)
 {
-	if ((keycode == S_KEY || keycode == DOWN_KEY) && game->map[game->p_pos.y
-		+ 1][game->p_pos.x] != '1')
+	char	x;
+
+	x = game->map[game->p_pos.y + 1][game->p_pos.x];
+	if ((keycode == S_KEY || keycode == DOWN_KEY) && x != '1')
 	{
 		if (game->map[game->p_pos.y + 1][game->p_pos.x] == 'C')
 		{

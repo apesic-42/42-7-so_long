@@ -16,6 +16,7 @@ FILES = init_game \
          parser \
          parser_utils \
          moves \
+         utils2
 
 SRCS = $(addprefix $(SRCS_DIR), $(addsuffix .c, main $(FILES)))
 OBJS = $(addprefix $(OBJS_DIR), $(addsuffix .o, main $(FILES)))

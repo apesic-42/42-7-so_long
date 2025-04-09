@@ -1,3 +1,14 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   parser_utils.c                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: apesic <apesicstudent.42.fr>               +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/04/08 15:11:24 by apesic            #+#    #+#             */
+/*   Updated: 2025/04/08 15:11:26 by apesic           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "so_long.h"
 
@@ -86,7 +97,7 @@ int	are_limits_ok(char **map)
 		while (map[y][++x])
 			if ((map[y][0] != '1') || (map[y][x + 1] == '\0'
 					&& map[y][x] != '1'))
-				return (ft_printf("Error\n1rst & last char of lines must be 1\n"),
+				return (ft_printf(ERR_F1),
 					0);
 		y++;
 	}
@@ -107,28 +118,4 @@ int	ft_tablen(char **tab)
 	while (tab[i])
 		i++;
 	return (i);
-}
-
-int	is_map_rectangular(char **map)
-{
-	int	x;
-	int	y;
-	int	i;
-	int	j;
-
-	i = 0;
-	x = ft_strlen(map[i]);
-	y = ft_tablen(map);
-	if ((x < 5 && y < 3) || (x < 3 && y < 5))
-		return (ft_printf("Error\nMinimum map must be 5x3 | 3x5"), 0);
-	while (map[i])
-	{
-		j = -1;
-		while (map[i][++j])
-			if (map[i][j + 1] == '\0' && j + 1 != x)
-				return (ft_printf("Error\nAll lines doesn't have the same size\n"),
-					0);
-		i++;
-	}
-	return (1);
 }

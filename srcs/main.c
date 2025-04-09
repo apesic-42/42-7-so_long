@@ -1,3 +1,14 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: apesic <apesicstudent.42.fr>               +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/04/09 11:49:57 by apesic            #+#    #+#             */
+/*   Updated: 2025/04/09 11:50:00 by apesic           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "so_long.h"
 
@@ -49,10 +60,10 @@ int	check_if_end(int keycode, t_solong *game)
 			game->e_pos.x * WIDTH, game->e_pos.y * HEIGHT);
 	if (game->coins_ok == game->total_coins && game->p_pos.y == game->e_pos.y
 		&& game->p_pos.x == game->e_pos.x)
-    	(ft_printf("\nAmazing! You've conquered this insanely tough level in"),
-    		ft_printf(" just %d moves! That's seriously impressive!\n", game->moves
-    			- 1),
-    		ft_printf("Ever considered going pro in e-sports?\n\n"),
+		(ft_printf("\nAmazing! You've conquered this insanely tough level in"),
+			ft_printf(" just %d moves! That's seriously impressive!\n",
+				game->moves - 1),
+			ft_printf("Ever considered going pro in e-sports?\n\n"),
 			free_game(game));
 	return (0);
 }
